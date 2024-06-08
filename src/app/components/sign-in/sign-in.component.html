@@ -1,0 +1,26 @@
+<div class="container-fluid full-height">
+  <div class="row no-gutters full-height">
+    <!-- Sign-Up Form Section -->
+    <div class="col-md-5 d-flex align-items-center justify-content-center">
+      <div class="signup-container">
+        <h2 class="text-center">Welcome back! Gisell</h2>
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="identifier">Username</label>
+            <input type="text" id="identifier" formControlName="identifier" class="form-control" placeholder="Enter username">
+          </div>
+          <div class="form-group mt-2">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter password">
+          </div>
+          <button type="submit" class="btn btn-primary mt-3 submit" [disabled]="signInForm.invalid">Log In</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Background Image Section -->
+    <div class="col-md-7 background-section" [style.background-image]="'url(' + signInBackground + ')'" style="background-size: cover; background-position: center;">
+      <!-- Background image and additional content can go here -->
+    </div>
+  </div>
+</div>

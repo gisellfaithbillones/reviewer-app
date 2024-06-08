@@ -11,8 +11,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  signUp(username: string, password: string, email: string, confirmPassword: string): Observable<any> {
-    const body = { username, password, email, confirmPassword};
-    return this.http.post(`${this.apiUrl}/auth/signup`, body);
+  signUp(email: string, password: string, passwordConfirmation: string, phoneNumber: string): Observable<any> {
+    const body = { email, password, passwordConfirmation, phoneNumber};
+    return this.http.post(`${this.apiUrl}/users/sign-up`, body);
+  }
+
+  signIn(identifier: string, password: string): Observable<any> {
+    const body = { identifier, password};
+    return this.http.post(`${this.apiUrl}/auth/sign-in`, body);
   }
 }

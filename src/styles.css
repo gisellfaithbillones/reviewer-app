@@ -12,3 +12,12 @@ p {
   font-family: 'Poppins', sans-serif;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.app-container {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}

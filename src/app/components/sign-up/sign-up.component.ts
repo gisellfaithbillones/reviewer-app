@@ -16,10 +16,10 @@ export class SignUpComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signUpForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
       email: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirmation: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
     });
   }
 
@@ -29,8 +29,8 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(): void {
     if (this.signUpForm.valid) {
-      const { username, password, email, confirmPassword } = this.signUpForm.value;
-      this.authService.signUp(username, password, email, confirmPassword).subscribe(
+      const {email, password, passwordConfirmation, phoneNumber} = this.signUpForm.value;
+      this.authService.signUp(email, password, passwordConfirmation, phoneNumber ).subscribe(
         response => {
           console.log('Sign-up successful', response);
         },

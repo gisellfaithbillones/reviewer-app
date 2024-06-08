@@ -1,0 +1,60 @@
+.dashboard {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+app-side-nav {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #a04ed8;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.dashboard-content {
+  margin-left: 250px; /* Account for the width of the fixed side nav */
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  height: 100vh; /* Full viewport height */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-6, .col-md-4, .col-md-8 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-md-4 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+.col-md-8 {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+
+.app-continue-learning, .app-recommended-for-you, .app-achievements, .app-related-subjects, .app-your-time, .app-popular-reviewer {
+  margin-bottom: 20px;
+}

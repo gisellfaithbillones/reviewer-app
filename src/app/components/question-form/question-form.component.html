@@ -1,0 +1,61 @@
+<div class="dashboard">
+  <app-side-nav></app-side-nav>
+  <div class="dashboard-content">
+    <div class="question-form-container">
+      <h2>Add New Question</h2>
+      <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="question">Question</label>
+          <input type="text" id="question" formControlName="question" class="form-control" placeholder="Enter the question">
+        </div>
+
+        <div class="form-group">
+          <label>Question Category</label>
+          <div formArrayName="categories">
+            <select id="categories" formControlName="categories" class="form-control">
+              @for (category of categories; track $index) {
+                <option [value]="category">{{ category }}</option>
+              }
+              <button type="button" class="btn btn-secondary" (click)="addCategory()">Add Category</button>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Multiple Choices</label>
+          <div formArrayName="choices">
+            @for (choice of choices.controls; track $index) {
+              <div class="choice" [formGroupName]="$index">
+                <option [value]="choice.value">{{ choice.value }}</option>
+                <input type="text" [formControlName]="$index" class="form-control" placeholder="Enter choice">
+                <button type="button" class="btn btn-primary mt-3" (click)="removeChoice($index)">Remove</button>
+              </div>
+            }
+          </div>
+          <button type="button" class="btn btn-primary mt-3" (click)="addChoice()">Add Choice</button>
+        </div>
+
+        <div class="form-group">
+          <label for="correctAnswer">Correct Answer</label>
+          <select id="correctAnswer" formControlName="correctAnswer" class="form-control">
+            @for (choice of choices.controls; track $index) {
+              <option [value]="choice.value">{{ choice.value }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="explanation">Explanation of the Answer</label>
+          <textarea id="explanation" formControlName="explanation" class="form-control" placeholder="Enter the explanation"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="hint">Hint</label>
+          <textarea id="hint" formControlName="hint" class="form-control" placeholder="Enter a hint"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="questionForm.invalid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
