@@ -12,11 +12,14 @@ import { CommonModule } from '@angular/common';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
+  signUpBackground= '../../../assets/images/signup.jpg';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signUpForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      email: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 
@@ -26,8 +29,8 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(): void {
     if (this.signUpForm.valid) {
-      const { username, password } = this.signUpForm.value;
-      this.authService.signUp(username, password).subscribe(
+      const { username, password, email, confirmPassword } = this.signUpForm.value;
+      this.authService.signUp(username, password, email, confirmPassword).subscribe(
         response => {
           console.log('Sign-up successful', response);
         },
