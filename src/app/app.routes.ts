@@ -4,7 +4,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
-
+import { CategorySelectionModalComponent } from './components/category-selection-modal/category-selection-modal.component';
 export const routes: Routes = [
   {
     path: 'theory-of-accounts',
@@ -26,6 +26,10 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'select-category',
+    component: CategorySelectionModalComponent
   },
   {
     path: 'add-question',

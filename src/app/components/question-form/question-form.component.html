@@ -10,18 +10,6 @@
         </div>
 
         <div class="form-group">
-          <label>Question Category</label>
-          <div formArrayName="categories">
-            <select id="categories" formControlName="categories" class="form-control">
-              @for (category of categories; track $index) {
-                <option [value]="category">{{ category }}</option>
-              }
-              <button type="button" class="btn btn-secondary" (click)="addCategory()">Add Category</button>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
           <label>Multiple Choices</label>
           <div formArrayName="choices">
             @for (choice of choices.controls; track $index) {
