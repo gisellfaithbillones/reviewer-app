@@ -5,6 +5,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 import { CategorySelectionModalComponent } from './components/category-selection-modal/category-selection-modal.component';
+import {ReviewerNameComponent} from "./components/reviewer-name/reviewer-name.component";
+
 export const routes: Routes = [
   {
     path: 'theory-of-accounts',
@@ -30,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'select-category',
     component: CategorySelectionModalComponent
+  },
+  {
+    path: 'path-to-reviewer-name',
+    component: ReviewerNameComponent
   },
   {
     path: 'add-question',

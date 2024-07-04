@@ -1,0 +1,53 @@
+<div class="layout-container">
+  <div class="side-nav">
+    <app-side-nav></app-side-nav>
+  </div>
+  <div class="main-content">
+    <button type="button" class="btn btn-primary mt-5 ms-5" data-bs-toggle="modal" data-bs-target="#reviewerNameModal">
+      Start a Reviewer Session
+    </button>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let reviewer of reviewers; let i = index">
+          <div class="card mb-4" style="width: 100%;">
+            <img [src]="reviewer.attachment" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ reviewer.title }}</h5>
+              <p class="card-text">{{ reviewer.description }}</p>
+              <button (click)="viewSession(reviewer.id)" class="btn btn-secondary">View Session</button>
+              <button (click)="takeQuiz(reviewer.id)" class="btn btn-primary ms-2">Take Quiz Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal for creating a reviewer session -->
+<div class="modal fade" id="reviewerNameModal" tabindex="-1" aria-labelledby="reviewerNameModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reviewerNameModalLabel">Create Reviewer Session</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="reviewerForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="reviewerTitle" class="form-label">Title/Name</label>
+            <input type="text" class="form-control" id="reviewerTitle" formControlName="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="reviewerDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="reviewerDescription" formControlName="description" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="reviewerAttachment" class="form-label">Attachment/Image</label>
+            <input type="file" class="form-control" id="reviewerAttachment" (change)="onFileChange($event)" accept="image/*">
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!reviewerForm.valid">Create Session</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

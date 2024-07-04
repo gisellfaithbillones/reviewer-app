@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -19,5 +19,9 @@ export class AuthService {
   signIn(identifier: string, password: string): Observable<any> {
     const body = { identifier, password};
     return this.http.post(`${this.apiUrl}/auth/sign-in`, body);
+  }
+
+  getLoggedInUserDetails(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth`);
   }
 }

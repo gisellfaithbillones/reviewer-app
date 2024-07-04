@@ -1,32 +1,49 @@
-<!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryModal">
-  Select Category
-</button>
+<div class="layout-container">
+  <div class="side-nav">
+    <app-side-nav></app-side-nav>
+  </div>
+  <div class="main-content">
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary mt-5 ms-5" data-bs-toggle="modal" data-bs-target="#categoryModal">
+      Select Category
+    </button>
 
-<!-- The Modal -->
-<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="categoryModalLabel">Choose a Category</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="categoryModalLabel">Choose a Category</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="categoryForm">
+              <label for="selectedCategory" class="form-label">Select Category:</label>
+              <select class="form-select" id="selectedCategory" formControlName="selectedCategory"
+                      aria-label="Category select"
+                      (change)="onCategoryChange($event)">
+                @for (category of categories; track $index) {
+                  <option [value]="category.id">{{ category.name }}</option>
+                }
+                <option value="newCategory">Add New Category</option>
+              </select>
+              <div>
+                @if (categoryForm.controls['selectedCategory'].value === 'newCategory') {
+                  <input type="text" class="form-control mt-2" placeholder="Enter new category name"
+                         formControlName="newCategoryName">
+                  <button type="button" class="btn btn-success mt-2" (click)="addNewCategory()">Add New Category
+                  </button>
+                }
+              </div>
 
-      <div class="modal-body">
-        <form [formGroup]="categoryForm">
-          <select class="form-select" formControlName="selectedCategory" aria-label="Category select">
-            @for (category of categories; track $index) {
-              <option [value]="category.id">{{ category.name }}</option>
-            }
-          </select>
-        </form>
-      </div>
-
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="confirmSelection()">Confirm</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="confirmSelection()">Confirm
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
