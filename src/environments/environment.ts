@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/api', // URL of your NestJS API
+  apiUrl: 'http://localhost:8000/api',
 };

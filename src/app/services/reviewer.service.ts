@@ -12,7 +12,7 @@ export class ReviewerService {
   constructor(private http: HttpClient) {}
 
   createReviewerSession(formData: FormData): Observable<any> {
-    return this.http.post(`$this.apiUrl/reviewer-name`, formData);
+    return this.http.post(`$this.apiUrl/reviewers/content`, formData);
   }
 
   getReviewerByUserId(userId: string): Observable<any> {

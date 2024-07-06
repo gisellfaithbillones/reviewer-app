@@ -30,7 +30,12 @@ export class ReviewerNameComponent {
     this.getReviewerByUserId(this.user?._id);
   }
 
-  constructor(private fb: FormBuilder,private router: Router, private reviewerService: ReviewerService, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private reviewerService: ReviewerService,
+    private authService: AuthService) {
+
     this.reviewerForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -52,18 +57,14 @@ export class ReviewerNameComponent {
       if (this.attachment) {
         formData.append('attachment', this.attachment);
       }
-      formData.append('userId', this.user?._id); // Add userId to form data
+      formData.append('userId', this.user?._id);
 
-
-      // Use the service to send form data to the API
       this.reviewerService.createReviewerSession(formData).subscribe({
         next: (response) => {
           console.log('Form submission successful:', response);
-          // Handle successful response
         },
         error: (error) => {
           console.error('Form submission error:', error);
-          // Handle error response
         }
       });
 
@@ -96,19 +97,19 @@ export class ReviewerNameComponent {
   }
 
   getAuthUser() {
-    this.user = {
-      _id: 'user123' // Example user ID
-    };
+    // this.user = {
+    //   _id: 'user123' // Example user ID
+    // };
 
-    // this.authService.getLoggedInUserDetails().subscribe({
-    //   next: (user) => {
-    //     this.user = user;
-    //     console.log('Logged in user:', user);
-    //   },
-    //   error: (error) => {
-    //     console.error('Error fetching logged in user:', error);
-    //   }
-    // });
+    this.authService.getLoggedInUserDetails().subscribe({
+      next: (user) => {
+        this.user = user;
+        console.log('Logged in user:', user);
+      },
+      error: (error) => {
+        console.error('Error fetching logged in user:', error);
+      }
+    });
   }
 
   viewSession(reviewerId: string): void {
