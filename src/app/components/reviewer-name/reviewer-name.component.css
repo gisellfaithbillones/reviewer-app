@@ -1,25 +1,77 @@
-/* Style for the overall layout container */
 .layout-container {
   display: flex;
-  min-height: 100vh; /* Full height of the viewport */
+  min-height: 100vh;
 }
 
-/* Style for the side navigation */
 .side-nav {
-  width: 250px; /* Fixed width for the side nav */
-  flex-shrink: 0; /* Prevents the nav from shrinking */
-  background: #f8f9fa; /* Light grey background */
-  height: 100%; /* Full height */
-  padding: 20px; /* Padding around the content */
+  width: 250px;
+  flex-shrink: 0;
+  background: #f8f9fa;
+  height: 100%;
+  padding: 20px;
 }
 
-/* Style for the main content area */
 .main-content {
-  flex-grow: 1; /* Takes up the remaining space */
-  padding: 20px; /* Padding around the content */
+  flex-grow: 1;
+  padding: 20px;
 }
 
-/* Additional styling for the modal and button if necessary */
-.btn-primary {
-  margin-bottom: 10px; /* Space below the button */
+.btn-top-right {
+  position: fixed;
+  top: 40px;
+  right: 10px;
 }
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-body .button-container {
+  display: flex;
+  justify-content: start;
+  margin-top: auto;
+}
+
+.button-container .btn {
+  margin-right: 10px; /* Adjust spacing between buttons as needed */
+}
+
+
+.card-body > div {
+  flex: 1;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+
+
